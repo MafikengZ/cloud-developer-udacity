@@ -39,11 +39,11 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     var url = new RegExp(querying, "i");
     return url.test(URL);
   }
-
-  app.get("/filteredimage", async (req: string, res: string) => {
+  
+  app.get("/filteredimage", async (req, res) => {
     // Validating the image_url query
-    var imageUrl = req.query.image_url;
-    var is_validUrl = validateUrl(image_url);
+    var imageUrl = req.query.imageUrl;
+    var is_validUrl = validateUrl(imageUrl);
 
     if (is_validUrl) {
       // Calling filterImageFromURL(image_url) to filter the image
@@ -74,7 +74,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // Root Endpoint
   // Displays a simple message to the user
   app.get("/", async (req, res) => {
-    res.send("try GET /filteredimage?image_path={{}}");
+    res.send("try GET /filteredimage?imageUrl={{}}");
   });
 
   // Start the Server
